@@ -1,0 +1,176 @@
+{% comment %} <!DOCTYPE html>
+<html>
+<head>
+  <title>AI Sentiment Analyzer</title>
+</head>
+<body>
+  <h1>🤖 AI Sentiment Analyzer</h1>
+  <p>Enter text below to analyze its sentiment:</p>
+
+  <form id="sentimentForm" method="POST" action="/analyze/">
+      {% csrf_token %}
+      <textarea name="text_input" id="textInput" placeholder="Enter your text here..." rows="5" cols="40"></textarea>
+      <br>
+      <button type="submit" id="analyzeBtn">Analyze Sentiment</button>
+  </form>
+
+    {% if error %}
+      <p style="color:red;">{{ error }}</p>
+    {% endif %}
+
+    {% if sentiment %}
+      <h3>Result:</h3>
+      <p><strong>Text:</strong> {{ text }}</p>
+      <p><strong>Sentiment:</strong> {{ sentiment }}</p>
+      <p><strong>emoji:</strong> {{ emoji }}</p>
+    {% endif %}
+
+
+</body>
+</html> {% endcomment %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Sentiment Analyzer</title>
+  <style>
+    /* Global Styles */
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+
+    /* Main Container */
+    .container {
+      background-color: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      padding: 40px;
+      width: 90%;
+      max-width: 600px;
+      text-align: center;
+      animation: fadeIn 0.7s ease-in-out;
+    }
+
+    /* Title */
+    h1 {
+      color: #2575fc;
+      margin-bottom: 10px;
+      font-size: 1.8em;
+    }
+
+    p {
+      color: #555;
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    /* Textarea */
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      resize: none;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    textarea:focus {
+      border-color: #2575fc;
+      outline: none;
+    }
+
+    /* Button */
+    button {
+      margin-top: 15px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      background-color: #2575fc;
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #1a5fd4;
+    }
+
+    /* Error message */
+    .error {
+      color: #e63946;
+      background-color: #ffe5e5;
+      border-left: 4px solid #e63946;
+      padding: 10px;
+      border-radius: 6px;
+      margin-top: 20px;
+      font-weight: 500;
+    }
+
+    /* Result box */
+    .result {
+      margin-top: 25px;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #f7faff;
+      border-left: 5px solid #2575fc;
+      text-align: left;
+      animation: fadeInUp 0.8s ease;
+    }
+
+    .result strong {
+      color: #2575fc;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>🤖 AI Sentiment Analyzer</h1>
+    <p>Enter text below to analyze its sentiment:</p>
+
+    <form id="sentimentForm" method="POST" action="/analyze/">
+      {% csrf_token %}
+      <textarea name="text_input" id="textInput" placeholder="Enter your text here..." rows="5" cols="40"></textarea>
+      <br>
+      <button type="submit" id="analyzeBtn">Analyze Sentiment</button>
+    </form>
+
+    {% if error %}
+      <div class="error">{{ error }}</div>
+    {% endif %}
+
+    {% if sentiment %}
+      <div class="result">
+        <p><strong>Text:</strong> {{ text }}</p>
+        <p><strong>Sentiment:</strong> {{ sentiment }}</p>
+        <p><strong>Emoji:</strong> {{ emoji }}</p>
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>
+
