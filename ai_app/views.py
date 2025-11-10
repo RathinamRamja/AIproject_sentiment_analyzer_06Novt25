@@ -35,6 +35,7 @@ def analyze_sentiment(request):
         result1['explanations'] = explanations
         print('result',result1)
         print('explanations',explanations)
+        print("hii")
         
         # Render the result in the same template
         return render(request, 'index.html', {
