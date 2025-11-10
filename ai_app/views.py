@@ -31,7 +31,6 @@ def analyze_sentiment(request):
             result1['polarity'], 
             result1['subjectivity']
         )
-        
         result1['explanations'] = explanations
         print('result',result1)
         print('explanations',explanations)
