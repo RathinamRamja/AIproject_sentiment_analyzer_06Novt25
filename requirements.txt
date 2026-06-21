@@ -1,4 +1,10 @@
 asgiref==3.10.0
+click==8.4.1
 Django==5.2.7
 djangorestframework==3.16.1
+joblib==1.5.3
+nltk==3.9.4
+regex==2026.5.9
 sqlparse==0.5.3
+textblob==0.20.0
+tqdm==4.68.3
